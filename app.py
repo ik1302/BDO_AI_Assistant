@@ -1,24 +1,45 @@
-
 import streamlit as st
 import google.generativeai as genai
 
 st.set_page_config(page_title="BDO Office AI Assistant")
 
-st.title("BDO Office AI Assistant")
+# Streamlit Secret se API key lena
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
-api_key = st.text_input("Gemini API Key", type="password")
-if api_key:
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
+
+st.title("BDO Office AI Assistant")
 
 task = st.selectbox(
     "Select Task",
-    ["Letter Drafting", "GR Analysis", "Note Sheet", "WhatsApp Message"]
+    [
+        "Letter Drafting",
+        "GR Analysis",
+        "Note Sheet",
+        "WhatsApp Message"
+    ]
 )
 
 text = st.text_area("Enter details")
 
-if st.button("Generate") and api_key and text:
-    prompt = f"Government office task: {task}\n\n{text}"
+if st.button("Generate") and text:
+
+    prompt = f"""
+    You are an expert Government Office Assistant.
+
+    Task Type: {task}
+
+    Rules:
+    - Use official Marathi language.
+    - Generate complete output.
+    - For letters include Subject, Reference and Main Body.
+    - For WhatsApp create concise official messages.
+    - For Note Sheet use government format.
+
+    User Request:
+    {text}
+    """
+
     response = model.generate_content(prompt)
+
     st.write(response.text)
