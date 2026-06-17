@@ -8,7 +8,7 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-st.title("BDO Office AI Assistant")
+st.title("KHAN SIR BADNAPUR OFFICE AI ASSISTANT")
 
 task = st.selectbox(
     "Select Task",
