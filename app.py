@@ -1,7 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 
-st.set_page_config(page_title="BDO Office AI Assistant")
+st.set_page_config(page_title="KHAN SIR BADNAPUR AI Office Assistant")
 
 # Streamlit Secret se API key lena
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
