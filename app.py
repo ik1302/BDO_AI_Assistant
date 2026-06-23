@@ -41,11 +41,10 @@ if st.session_state.msg_date != str(datetime.date.today()):
 DAILY_LIMIT = 50
 
 # ============================================
-# CUSTOM CSS — पूरा जादू 🎨
+# CUSTOM CSS
 # ============================================
 st.markdown("""
 <style>
-/* === मुख्य बैकग्राउंड === */
 .stApp {
     background: #0a0a0c;
 }
@@ -56,7 +55,6 @@ st.markdown("""
     max-width: 1100px;
 }
 
-/* === एनिमेटेड टाइटल === */
 .main-title {
     font-size: 2.6rem;
     font-weight: 900;
@@ -75,7 +73,6 @@ st.markdown("""
     to { background-position: 300% center; }
 }
 
-/* === सबटाइटल === */
 .subtitle {
     text-align: center;
     color: #72717a;
@@ -84,7 +81,6 @@ st.markdown("""
     margin-bottom: 30px;
 }
 
-/* === कार्ड === */
 .card {
     background: rgba(22, 22, 26, 0.85);
     backdrop-filter: blur(12px);
@@ -93,7 +89,6 @@ st.markdown("""
     padding: 22px;
     margin: 8px 0;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
 .card:hover {
@@ -102,13 +97,6 @@ st.markdown("""
     transform: translateY(-3px);
 }
 
-.card-active {
-    border-color: #f59e0b !important;
-    box-shadow: 0 0 25px rgba(245, 158, 11, 0.15) !important;
-    background: rgba(245, 158, 11, 0.05) !important;
-}
-
-/* === टास्क आइकन === */
 .task-icon {
     font-size: 2.2rem;
     margin-bottom: 8px;
@@ -129,7 +117,6 @@ st.markdown("""
     line-height: 1.4;
 }
 
-/* === इनपुट बॉक्स === */
 .stTextArea > div > div > textarea {
     border-radius: 14px !important;
     border: 2px solid #2a2a32 !important;
@@ -151,7 +138,6 @@ st.markdown("""
     color: #555 !important;
 }
 
-/* === सिलेक्टबॉक्स === */
 .stSelectbox > div > div {
     background: #16161a !important;
     border: 2px solid #2a2a32 !important;
@@ -165,38 +151,23 @@ st.markdown("""
     box-shadow: 0 0 20px rgba(245, 158, 11, 0.15) !important;
 }
 
-/* === जेनरेट बटन === */
-.gen-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 16px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    color: white;
-    font-weight: 800;
-    font-size: 1.1rem;
-    border: none;
-    cursor: pointer;
+.stButton > button {
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 1.05rem !important;
+    padding: 14px 28px !important;
+    border: none !important;
     transition: all 0.3s ease;
-    letter-spacing: 0.5px;
+    width: 100%;
 }
 
-.gen-btn:hover {
+.stButton > button:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 35px rgba(245, 158, 11, 0.3);
 }
 
-.gen-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-/* === आउटपुट बॉक्स === */
 .output-box {
     background: rgba(22, 22, 26, 0.9);
     border: 1px solid rgba(16, 185, 129, 0.3);
@@ -228,29 +199,6 @@ st.markdown("""
     white-space: pre-wrap;
 }
 
-/* === कॉपी बटन === */
-.copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 18px;
-    border-radius: 10px;
-    background: rgba(245, 158, 11, 0.15);
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 14px;
-}
-
-.copy-btn:hover {
-    background: rgba(245, 158, 11, 0.25);
-    transform: scale(1.03);
-}
-
-/* === लोडिंग स्पिनर === */
 .thinking-box {
     text-align: center;
     padding: 40px 20px;
@@ -289,7 +237,6 @@ st.markdown("""
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* === साइडबार === */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #111115 0%, #0d0d10 100%) !important;
     border-right: 1px solid #2a2a32 !important;
@@ -325,7 +272,6 @@ st.markdown("""
     font-size: 0.9rem;
 }
 
-/* === प्रोग्रेस बार === */
 .progress-bar-bg {
     width: 100%;
     height: 6px;
@@ -342,7 +288,6 @@ st.markdown("""
     transition: width 0.5s ease;
 }
 
-/* === हिस्ट्री कार्ड === */
 .history-item {
     background: rgba(22, 22, 26, 0.6);
     border: 1px solid #2a2a32;
@@ -352,7 +297,6 @@ st.markdown("""
     font-size: 0.8rem;
     color: #72717a;
     transition: all 0.2s ease;
-    cursor: pointer;
 }
 
 .history-item:hover {
@@ -360,7 +304,6 @@ st.markdown("""
     color: #e8e6e3;
 }
 
-/* === अलर्ट/एरर === */
 .limit-alert {
     background: rgba(239, 68, 68, 0.1);
     border: 1px solid rgba(239, 68, 68, 0.3);
@@ -370,16 +313,6 @@ st.markdown("""
     animation: fadeSlideUp 0.4s ease;
 }
 
-/* === स्क्रॉलबार === */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
-
-/* === डिफॉल्ट छुपाओ === */
-#MainMenu, footer, header { visibility: hidden; }
-.block-container { padding-top: 1.5rem !important; }
-
-/* === हिस्ट्री सेक्शन === */
 .section-title {
     color: #72717a;
     font-size: 0.75rem;
@@ -387,6 +320,25 @@ st.markdown("""
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin: 20px 0 10px 0;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
+
+#MainMenu, footer, header { visibility: hidden; }
+.block-container { padding-top: 1.5rem !important; }
+
+.stCodeBlock {
+    background: #111115 !important;
+    border: 1px solid #2a2a32 !important;
+    border-radius: 12px !important;
+}
+
+[data-testid="stCodeCopyButton"] {
+    background: #f59e0b !important;
+    color: #0a0a0c !important;
+    border-radius: 8px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -398,22 +350,18 @@ TASKS = {
     "Letter Drafting": {
         "icon": "✉️",
         "desc": "Official Marathi letters with Subject & Reference",
-        "color": "#f59e0b"
     },
     "GR Analysis": {
         "icon": "📊",
         "desc": "Government Resolution analysis & summary",
-        "color": "#3b82f6"
     },
     "Note Sheet": {
         "icon": "📋",
         "desc": "Government format Note Sheet preparation",
-        "color": "#10b981"
     },
     "WhatsApp Message": {
         "icon": "📱",
         "desc": "Concise official WhatsApp messages",
-        "color": "#ef4444"
     }
 }
 
@@ -421,8 +369,6 @@ TASKS = {
 # SIDEBAR
 # ============================================
 with st.sidebar:
-
-    # लोगो
     st.markdown("""
     <div style="text-align:center;padding:10px 0 20px 0;">
         <div style="font-size:2.5rem;">🏛️</div>
@@ -434,7 +380,6 @@ with st.sidebar:
     # उपयोग स्टैट्स
     used = st.session_state.msg_count
     percent = min((used / DAILY_LIMIT) * 100, 100)
-
     bar_color = "#10b981" if percent < 60 else "#f59e0b" if percent < 85 else "#ef4444"
 
     st.markdown(f"""
@@ -475,28 +420,25 @@ with st.sidebar:
     # हिस्ट्री
     if st.session_state.history:
         st.markdown('<p class="section-title">हाल के काम</p>', unsafe_allow_html=True)
-        for i, h in enumerate(reversed(st.session_state.history[-8:])):
-            icon = TASKS.get(h["task"], {}).get("icon", "📄")
+        for h_item in reversed(st.session_state.history[-8:]):
+            icon = TASKS.get(h_item["task"], {}).get("icon", "📄")
+            short_text = h_item["text"][:50]
             st.markdown(f"""
             <div class="history-item">
-                {icon} <strong>{h['task']}</strong><br>
-                <span style="font-size:0.75rem;color:#555;">{h['text'][:50]}...</span>
+                {icon} <strong>{h_item['task']}</strong><br>
+                <span style="font-size:0.75rem;color:#555;">{short_text}...</span>
             </div>
             """, unsafe_allow_html=True)
 
-    # फुटर
     st.markdown("""
     <div style="text-align:center;padding:20px 0 5px 0;color:#444;font-size:0.7rem;">
-        Made with ❤️ for Khan Sir<br>
-        Badnapur Office
+        Made with ❤️ for Khan Sir<br>Badnapur Office
     </div>
     """, unsafe_allow_html=True)
 
 # ============================================
-# MAIN AREA
+# MAIN AREA — टाइटल
 # ============================================
-
-# टाइटल
 st.markdown('<p class="main-title">KHAN SIR BADNAPUR</p>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">AI Office Assistant — सरकारी कामकाज अब स्मार्ट तरीके से</p>', unsafe_allow_html=True)
 
@@ -514,43 +456,30 @@ if st.session_state.msg_count >= DAILY_LIMIT:
     st.stop()
 
 # ============================================
-# TASK SELECTION — कार्ड स्टाइल
+# TASK SELECTION — कार्ड
 # ============================================
 st.markdown('<p class="section-title">काम चुनो</p>', unsafe_allow_html=True)
 
 cols = st.columns(4)
-selected_task = st.session_state.get("selected_task", "Letter Drafting")
-
 for i, (task_name, task_info) in enumerate(TASKS.items()):
     with cols[i]:
-        is_active = selected_task == task_name
-        active_class = "card-active" if is_active else ""
         st.markdown(f"""
-        <div class="card {active_class}" onclick="document.getElementById('task_{i}').click()">
+        <div class="card">
             <span class="task-icon">{task_info['icon']}</span>
             <p class="task-name">{task_name}</p>
             <p class="task-desc">{task_info['desc']}</p>
         </div>
-        <button id="task_{i}" style="display:none;" onclick="
-            const payload = {{task: '{task_name}'}};
-            window.parent.postMessage({{type: 'streamlit:setComponentValue', value: payload}}, '*');
-        "></button>
         """, unsafe_allow_html=True)
 
-# Hidden selectbox for task (real data binding)
-task_options = list(TASKS.keys())
-task_index = task_options.index(selected_task) if selected_task in task_options else 0
-
-# यह selectbox छुपा हुआ है — कार्ड click से चलेगा
+# ============================================
+# TASK SELECTBOX (असली data binding)
+# ============================================
 task = st.selectbox(
-    "Task",
-    task_options,
-    index=task_index,
-    label_visibility="collapsed",
-    key="task_select"
+    "टास्क चुनो",
+    list(TASKS.keys()),
+    label_visibility="collapsed"
 )
 
-# Simple approach — visible selectbox with custom label
 st.markdown("---")
 st.markdown(f'<p style="color:#72717a;font-size:0.85rem;font-weight:600;">📌 टास्क: <span style="color:#f59e0b;">{task}</span></p>', unsafe_allow_html=True)
 
@@ -575,17 +504,7 @@ text = st.text_area(
 # GENERATE BUTTON
 # ============================================
 st.markdown("<div style='height:10px;'></div>", unsafe_allow_html=True)
-
-btn_html = f"""
-<button class="gen-btn" id="genBtn" onclick="
-    document.getElementById('streamlit_gen_btn').click();
-">
-    🚀 Generate {task}
-</button>
-<button id="streamlit_gen_btn" style="display:none;"></button>
-"""
-st.markdown(btn_html, unsafe_allow_html=True)
-generate_clicked = st.button("Generate", key="gen_button", label_visibility="collapsed")
+generate_clicked = st.button(f"🚀 Generate {task}", use_container_width=True, type="primary")
 
 # ============================================
 # GENERATE LOGIC
@@ -601,25 +520,24 @@ if generate_clicked and text.strip():
     lang_instruction = lang_map.get(lang_mode, "official Marathi language")
 
     # Prompt बनाओ
-    prompt = f"""
-    You are an expert Government Office Assistant working for Khan Sir at Badnapur Office.
+    prompt = f"""You are an expert Government Office Assistant working for Khan Sir at Badnapur Office.
 
-    Task Type: {task}
+Task Type: {task}
 
-    Language: Use {lang_instruction}.
+Language: Use {lang_instruction}.
 
-    Rules:
-    - Generate complete, ready-to-use output.
-    - For Letter Drafting: Include Subject line, Reference number (if applicable), proper salutation, main body, and closing.
-    - For GR Analysis: Provide summary, key points, implications, and action required.
-    - For Note Sheet: Use proper government format with proposal, background, financial details, and recommendation.
-    - For WhatsApp Message: Keep it concise, official, and clear with proper formatting.
-    - Use proper government terminology and format.
-    - Do NOT add any extra explanation outside the output format.
+Rules:
+- Generate complete, ready-to-use output.
+- For Letter Drafting: Include Subject line, Reference number (if applicable), proper salutation, main body, and closing.
+- For GR Analysis: Provide summary, key points, implications, and action required.
+- For Note Sheet: Use proper government format with proposal, background, financial details, and recommendation.
+- For WhatsApp Message: Keep it concise, official, and clear with proper formatting.
+- Use proper government terminology and format.
+- Do NOT add any extra explanation outside the output format.
 
-    User Request:
-    {text}
-    """
+User Request:
+{text}
+"""
 
     # लोडिंग दिखाओ
     loading_placeholder = st.empty()
@@ -634,10 +552,8 @@ if generate_clicked and text.strip():
     """, unsafe_allow_html=True)
 
     try:
-        # Model बनाओ
+        # Model बनाओ और call करो
         model = genai.GenerativeModel(model_choice)
-
-        # API call
         response = model.generate_content(prompt)
 
         # लोडिंग हटाओ
@@ -653,26 +569,23 @@ if generate_clicked and text.strip():
             "time": datetime.datetime.now().strftime("%H:%M")
         })
 
-        # आउटपुट दिखाओ
+        # आउटपुट
         output_text = response.text
 
-        # Escape HTML for safe display
-        safe_output = output_text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-        st.markdown(f"""
+        # CSS बॉक्स + st.code (Copy बटन बिल्ट-इन)
+        st.markdown("""
         <div class="output-box">
-            <div class="output-text">{safe_output}</div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                <button class="copy-btn" onclick="
-                    navigator.clipboard.writeText(decodeURIComponent('{urllib.parse.quote(output_text)}'));
-                    this.innerHTML='✅ Copied!';
-                    setTimeout(() => this.innerHTML='📋 Copy Text', 2000);
-                ">📋 Copy Text</button>
+            <div class="output-text">
+        """, unsafe_allow_html=True)
+
+        st.code(output_text, language=None)
+
+        st.markdown("""
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        # Session messages में भी रखो
+        # Session messages में रखो
         st.session_state.messages.append({
             "task": task,
             "input": text,
@@ -681,11 +594,12 @@ if generate_clicked and text.strip():
 
     except Exception as e:
         loading_placeholder.empty()
+        error_msg = str(e)
         st.markdown(f"""
         <div class="limit-alert" style="border-color:rgba(239,68,68,0.3);">
             <div style="font-size:2.5rem;margin-bottom:10px;">⚠️</div>
             <h3 style="color:#ef4444;margin:0 0 6px 0;">Error आया</h3>
-            <p style="color:#72717a;margin:0;font-size:0.9rem;">{str(e)}</p>
+            <p style="color:#72717a;margin:0;font-size:0.9rem;">{error_msg}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -697,29 +611,24 @@ elif generate_clicked and not text.strip():
     """, unsafe_allow_html=True)
 
 # ============================================
-# पुराने रिजल्ट्स दिखाओ
+# पिछले रिजल्ट्स
 # ============================================
 if st.session_state.messages:
     st.markdown("---")
-    st.markdown('<p class="section-title">पिछले रिजल्ट्स</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-title">पिछले रिजल्ट्स (click to copy)</p>', unsafe_allow_html=True)
 
-    for i, msg in enumerate(reversed(st.session_state.messages[-5:])):
+    for msg in reversed(st.session_state.messages[-5:]):
         icon = TASKS.get(msg["task"], {}).get("icon", "📄")
-        safe_prev = msg["output"][:300].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        st.markdown(f"""
-        <div class="card" style="cursor:pointer;" onclick="
-            navigator.clipboard.writeText(decodeURIComponent('{urllib.parse.quote(msg[\"output\"])}'));
-        ">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-                <span style="font-size:1.4rem;">{icon}</span>
-                <strong style="color:#f59e0b;font-size:0.9rem;">{msg['task']}</strong>
-                <span style="color:#444;font-size:0.75rem;margin-left:auto;">click to copy</span>
-            </div>
-            <p style="color:#72717a;font-size:0.82rem;margin:0;line-height:1.5;">
-                {safe_prev}...
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        with st.container():
+            st.markdown(f"""
+            <div class="card">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                    <span style="font-size:1.4rem;">{icon}</span>
+                    <strong style="color:#f59e0b;font-size:0.9rem;">{msg['task']}</strong>
+                </div>
+            """, unsafe_allow_html=True)
+            st.code(msg["output"], language=None)
+            st.markdown("</div>", unsafe_allow_html=True)
 
 # ============================================
 # FOOTER
